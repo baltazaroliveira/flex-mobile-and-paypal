@@ -1,0 +1,77 @@
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <service name="Products">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">services.products</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="getProduct" return-type="Items[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">http://www.crushitmobile.com/PayPalFlex/assets/products.json</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://www.crushitmobile.com/PayPalFlex/assets/products.json</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">item</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Items">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Items</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">Products</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="getProduct">
+      <item name="propertySpecifier">item</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <property name="item" type="Item" required="true"/>
+  </entity>
+  <entity name="Item">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Item</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">Products</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <property name="id" type="integer" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <property name="price" type="double" required="true" default="0"/>
+    <property name="image_url" type="string" required="true"/>
+    <property name="in_stock" type="boolean" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="qty" type="integer" required="true"/>
+  </entity>
+</model>
